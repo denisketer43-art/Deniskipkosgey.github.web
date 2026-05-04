@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denis Kipkosgey Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-light: #1a2d42;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --cream: #f7f3ed;
+      --cream-dark: #ede8df;
+      --text: #2c2c2c;
+      --text-muted: #6b6b6b;
+      --white: #ffffff;
+      --border: rgba(201,168,76,0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,27,42,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: rgba(247,243,237,0.75);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 60%, #243b55 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 2rem 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='0.8' fill='rgba(201,168,76,0.12)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-avatar {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 40px rgba(201,168,76,0.3);
+      animation: fadeDown 0.9s ease both;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      line-height: 1.1;
+      animation: fadeDown 1s 0.1s ease both;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      color: var(--gold-light);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      max-width: 660px;
+      margin: 1rem auto 0;
+      animation: fadeDown 1s 0.2s ease both;
+    }
+
+    .hero-divider {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      margin: 2.2rem auto;
+      animation: fadeDown 1s 0.3s ease both;
+    }
+
+    .highlights {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.6rem 2.2rem;
+      max-width: 640px;
+      text-align: left;
+      animation: fadeDown 1s 0.4s ease both;
+    }
+
+    .highlights h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .highlights ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .highlights li {
+      color: rgba(247,243,237,0.82);
+      font-size: 0.9rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .highlights li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .hero-tagline-bottom {
+      margin-top: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: rgba(247,243,237,0.55);
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      animation: fadeDown 1s 0.5s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeDown 1s 0.6s ease both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(247,243,237,0.35);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    section.full-width {
+      max-width: 100%;
+      padding: 80px 0;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-line {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2.4rem;
+    }
+
+    /* ── WHAT I DO ── */
+    #what-i-do {
+      background: var(--cream-dark);
+      max-width: 100%;
+      padding: 80px 2rem;
+    }
+
+    #what-i-do .inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-top: 3px solid var(--gold);
+      padding: 2rem 1.8rem;
+      border-radius: 2px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(13,27,42,0.1);
+    }
+
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy);
+      max-width: 100%;
+      padding: 80px 2rem;
+    }
+
+    #contact .inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #contact .section-title { color: var(--white); }
+    #contact .section-label { color: var(--gold-light); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-block p, .contact-block a {
+      font-size: 0.9rem;
+      color: rgba(247,243,237,0.8);
+      line-height: 2;
+      text-decoration: none;
+      display: block;
+    }
+
+    .contact-block a:hover { color: var(--gold-light); }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      background: var(--white);
+      border-left: 4px solid var(--gold);
+      padding: 2rem 2.4rem;
+      border-radius: 2px;
+      margin-top: 2.5rem;
+    }
+
+    .about-strip p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .about-strip .about-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s;
+    }
+
+    .about-strip .about-link:hover { border-color: var(--gold); }
+
+    /* ── PILLARS ── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .pillar {
+      background: var(--cream-dark);
+      border-radius: 2px;
+      padding: 1.8rem 1.4rem;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+      transition: transform 0.25s;
+    }
+
+    .pillar:hover { transform: translateY(-3px); }
+
+    .pillar-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .pillar h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .pillar p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .pillar a {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s;
+    }
+
+    .pillar a:hover { border-color: var(--gold); }
+
+    /* ── CONNECT STRIP ── */
+    .connect-strip {
+      background: var(--cream-dark);
+      border-radius: 2px;
+      padding: 2rem 2.4rem;
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+
+    .connect-strip p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .connect-strip .links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #090f18;
+      color: rgba(247,243,237,0.35);
+      text-align: center;
+      padding: 1.8rem 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px; left: 0; right: 0;
+        background: var(--navy);
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .contact-grid { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#home">Denis Kipkosgey</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#what-i-do">What I Do</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#volunteering">Volunteering</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#contact">Contacts</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <img
+      class="hero-avatar"
+      src="IMG_0980.jpg"
+      alt="Denis Kipkosgey"
+      onerror="this.style.display='none'"
+    />
+    <h1 class="hero-name">Denis Kipkosgey</h1>
+    <p class="hero-tagline">
+      International Relations and Diplomacy Graduate | Youth Development | Governance and Research Practitioner | Professional Photographer
+    </p>
+    <div class="hero-divider"></div>
+
+    <div class="highlights">
+      <h2>Key Highlights</h2>
+      <ul>
+        <li>Experience in Government (Ministry of Industry, Trade and Investment. State Department of Trade.)</li>
+        <li>Strategy and Resource Mobilization Intern (Public Service Program) Stationed in Maasai Mara University.</li>
+        <li>Experience in the private sector, having worked with Umoja Shoes and Panda Mart in customer service and stock control roles.</li>
+        <li>Strong background in Research and Community Engagement.</li>
+        <li>Professional Photographer with a focus on storytelling.</li>
+        <li>Volunteer Experience with humanitarian and community initiatives.</li>
+      </ul>
+    </div>
+
+    <p class="hero-tagline-bottom">Driving impact through policy, community engagement, and visual storytelling.</p>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://drive.google.com/file/d/1SHJFSVks2IqCMx2WDCaSakkyOu4c65m4/view?usp=sharing" target="_blank">Download CV</a>
+      <a class="btn btn-outline" href="#contact">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section id="what-i-do" class="full-width">
+    <div class="inner">
+      <p class="section-label">What I Do</p>
+      <h2 class="section-title">Areas of Practice</h2>
+      <div class="section-line"></div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🏛️</div>
+          <h3>Governance and Policy Support</h3>
+          <p>Engaging with institutional processes, policy environments, and youth participation frameworks.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔬</div>
+          <h3>Research and Development Work</h3>
+          <p>Conducting research, analysis, and reporting to support development initiatives and decision making.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📷</div>
+          <h3>Photography and Visual Storytelling</h3>
+          <p>Capturing moments that document people, communities, and development impact through imagery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">Profile</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-line"></div>
+
+    <div class="about-strip">
+      <p>
+        A young professional with a Bachelor's degree in International Relations and Diplomacy, experienced in government internships, the private sector, research, resource mobilization, and community engagement. Passionate about governance, youth empowerment, and socio economic development in Kenya and Africa.
+      </p>
+      <a class="about-link" href="https://sites.google.com/view/deniskipkosgeyprofile/about-me" target="_blank">About Me →</a>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🎓</div>
+        <h3>Education</h3>
+        <p>International Relations &amp; Diplomacy Graduate</p>
+        <a href="https://sites.google.com/view/deniskipkosgeyprofile/education" target="_blank">Go to Education →</a>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🏛️</div>
+        <h3>Experience</h3>
+        <p>Government Internship + NGO + Private Sector Experience</p>
+        <a href="https://sites.google.com/view/deniskipkosgeyprofile/experience" target="_blank">Go to Experience →</a>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🌍</div>
+        <h3>Focus Areas</h3>
+        <p>Governance | Youth Empowerment | Research | Development</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section id="skills" style="padding-top:0; padding-bottom:0;">
+    <div class="connect-strip">
+      <p>Let's connect for any opportunities: Youth engagement initiatives, governance, research, development, visual storytelling, etc.</p>
+      <div class="links">
+        <a class="btn btn-primary" href="mailto:deniskipkosgey@gmail.com">Email Me</a>
+        <a class="btn btn-outline" href="https://bit.ly/4e5FbQB" target="_blank">WhatsApp Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="full-width">
+    <div class="inner">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Contacts</h2>
+      <div class="section-line"></div>
+
+      <div class="contact-grid">
+        <div class="contact-block">
+          <h3>Direct Contact</h3>
+          <a href="mailto:deniskipkosgey@gmail.com">Email: deniskipkosgey@gmail.com</a>
+          <a href="tel:+254705740801">Phone: +254705740801</a>
+          <a href="https://bit.ly/4e5FbQB" target="_blank">WhatsApp: Click to chat</a>
+        </div>
+        <div class="contact-block">
+          <h3>Location &amp; Address</h3>
+          <p>Location: Nairobi, Kenya</p>
+          <p>Postal address: P.O Box 66-40110, Songhor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Denis Kipkosgey &copy; 2025 &nbsp;·&nbsp; Nairobi, Kenya</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+</body>
+</html>
